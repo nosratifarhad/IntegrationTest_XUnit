@@ -1,7 +1,7 @@
 using ECommerce.Api;
 using Microsoft.AspNetCore.Mvc.Testing;
 
-namespace ECommerce.IntegrationTest
+namespace ECommerce.IntegrationTest.Controllers
 {
     public class ProductsControllerIntegrationTests : IClassFixture<WebApplicationFactory<Startup>>
     {
