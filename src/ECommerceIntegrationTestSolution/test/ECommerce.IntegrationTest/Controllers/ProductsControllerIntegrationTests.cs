@@ -1,4 +1,7 @@
 using ECommerce.Api;
+using ECommerce.IntegrationTest.Extensions;
+using ECommerce.Service.ViewModels.ProductViewModels;
+using FluentAssertions;
 using Microsoft.AspNetCore.Mvc.Testing;
 
 namespace ECommerce.IntegrationTest.Controllers
@@ -17,16 +20,19 @@ namespace ECommerce.IntegrationTest.Controllers
         }
         #endregion Ctor
 
+        #region [ GetProducts ] 
+        
         [Fact]
-        public async Task Test1()
+        public async Task When_CallGetProducts_Then_ReturnedproductViewModelList()
         {
-            var response = await _client.GetAsync("/api/products");
+            var response = await _client.GetAsync("/api/products").ConfigureAwait(false);
 
-            //var responseString = await response.Content.ReadAsStringAsync();
+            var responseModel = await response.ResponseToViewModel<IEnumerable<ProductViewModel>>();
 
-            //// Assert
-            //Assert.Equal("Hello World!",
-            //    responseString);
+            responseModel.Should().NotBeNull();
+            responseModel.Should().HaveCount(5);
         }
+
+        #endregion [ GetProducts ] 
     }
 }
