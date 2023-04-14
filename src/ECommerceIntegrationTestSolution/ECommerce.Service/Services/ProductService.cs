@@ -153,13 +153,13 @@ namespace ECommerce.Service.Services
         private void ValidateProductName(string productName)
         {
             if (string.IsNullOrEmpty(productName) || string.IsNullOrWhiteSpace(productName))
-                throw new ArgumentNullException(nameof(productName), "Product Name must not be empty");
+                throw new ArgumentException(nameof(productName), "Product Name cannot be nul.l");
         }
 
         private void ValidateProductTitle(string productTitle)
         {
             if (string.IsNullOrEmpty(productTitle) || string.IsNullOrWhiteSpace(productTitle))
-                throw new ArgumentNullException(nameof(productTitle), "Product Title must not be empty");
+                throw new ArgumentException(nameof(productTitle), "Product Title cannot be null.");
         }
 
         #endregion Private
