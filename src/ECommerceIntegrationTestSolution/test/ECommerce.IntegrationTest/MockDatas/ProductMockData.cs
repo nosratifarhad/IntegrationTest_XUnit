@@ -11,7 +11,7 @@ namespace ECommerce.IntegrationTest.MockDatas
         public const int Zero = 0;
 
         public const int NegativeOne = -1;
-
+        
         #region [ CreateProductInputModel ]
 
 

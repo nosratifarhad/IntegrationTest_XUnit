@@ -153,7 +153,7 @@ namespace ECommerce.Service.Services
         private void ValidateProductName(string productName)
         {
             if (string.IsNullOrEmpty(productName) || string.IsNullOrWhiteSpace(productName))
-                throw new ArgumentException(nameof(productName), "Product Name cannot be null");
+                throw new ArgumentException(nameof(productName), "Product Name cannot be nul.l");
         }
 
         private void ValidateProductTitle(string productTitle)
