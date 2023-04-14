@@ -109,3 +109,7 @@ public static UpdateProductInputModel ValidUpdateProductInputModel()
         .RuleFor(bp => bp.IsExisting, f => f.Random.Bool())
         .RuleFor(bp => bp.Weight, f => f.Random.Number());
 ```
+### Passed All Tests
+
+![My Remote Image](https://github.com/nosratifarhad/Xunit_IntegrationTest/blob/main/docs/res.png)
+
