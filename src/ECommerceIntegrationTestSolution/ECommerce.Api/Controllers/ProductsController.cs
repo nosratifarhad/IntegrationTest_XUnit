@@ -15,7 +15,7 @@ namespace ECommerce.Api.Controllers
         #region Ctor
         public ProductsController(IProductService productService)
         {
-           this._productService = productService;
+            this._productService = productService;
         }
 
         #endregion Ctor
@@ -28,7 +28,7 @@ namespace ECommerce.Api.Controllers
         public async Task<IActionResult> GetProducts()
         {
             var productVMs = await _productService.GetProductsAsync().ConfigureAwait(false);
-            
+
             return Ok(productVMs);
         }
 
@@ -53,7 +53,7 @@ namespace ECommerce.Api.Controllers
         [HttpGet("/api/product/{productId:int}", Name = nameof(GetProduct))]
         public async Task<IActionResult> GetProduct(int productId)
         {
-            var product =await _productService.GetProductAsync(productId).ConfigureAwait(false);
+            var product = await _productService.GetProductAsync(productId).ConfigureAwait(false);
 
             return Ok(product);
         }
@@ -84,7 +84,7 @@ namespace ECommerce.Api.Controllers
         public async Task<IActionResult> DeleteProduct(int productId)
         {
             await _productService.DeleteProductAsync(productId).ConfigureAwait(false);
-            
+
             return NoContent();
         }
 

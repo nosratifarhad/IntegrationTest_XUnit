@@ -14,7 +14,6 @@ namespace ECommerce.IntegrationTest.MockDatas
         
         #region [ CreateProductInputModel ]
 
-
         public static CreateProductInputModel ProductNameIsNullInC1reateProductInputModel()
             => new Faker<CreateProductInputModel>()
               .RuleFor(bp => bp.ProductName, f => string.Empty)

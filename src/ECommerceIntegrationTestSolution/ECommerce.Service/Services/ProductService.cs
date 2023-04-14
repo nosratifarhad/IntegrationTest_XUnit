@@ -97,7 +97,7 @@ namespace ECommerce.Service.Services
         {
             var isExistProduct = await _productReadRepository.IsExistProductAsync(productId).ConfigureAwait(false);
             if (isExistProduct == false)
-                throw new ArgumentException("productId Is Not Found.");
+                throw new ArgumentException("ProductId Is Not Found.");
         }
 
         private Product CreateProductEntityFromInputModel(CreateProductInputModel inputModel)

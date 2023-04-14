@@ -7,12 +7,12 @@ namespace ECommerce.Infra.Repositorys
 {
     public class ProductReadRepository : IProductReadRepository
     {
-        public async Task<ProductDto> GetProductAsync(int productId)
+        public async Task<ProductDto?> GetProductAsync(int productId)
         {
             if (productId < 5)
                 return await Task.FromResult(CreateFakerProductDto(productId));
 
-            return await Task.FromResult(new ProductDto());
+            return null;
         }
 
         public async Task<IEnumerable<ProductDto>> GetProductsAsync()
