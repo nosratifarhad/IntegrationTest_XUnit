@@ -8,6 +8,10 @@
 ### * Install pakeges :
 * dotnet add package FluentAssertions
 * dotnet add package Bogus
+
+## I Use "FluentAssertions" For Handle Assert Tests 
+* You can See All Sample "FluentAssertions" In [This Repository](https://github.com/nosratifarhad/FluentAssertions.git/).
+
 ----
 ### Test For Created Successed Product
 
