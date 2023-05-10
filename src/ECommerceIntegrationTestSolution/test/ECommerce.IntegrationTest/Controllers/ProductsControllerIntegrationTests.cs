@@ -48,7 +48,7 @@ namespace ECommerce.IntegrationTest.Controllers
         {
             var mockInputModel = ProductMockData.ValidCreateProductInputModel().ToRequestModel();
 
-            var response = await _client.PostAsync("/api/product", mockInputModel).ConfigureAwait(false);
+            var response = await _client.PostAsync("/api/products", mockInputModel).ConfigureAwait(false);
 
             response.StatusCode.Should().Be(System.Net.HttpStatusCode.Created);
             response.IsSuccessStatusCode.Should().BeTrue();
@@ -67,30 +67,10 @@ namespace ECommerce.IntegrationTest.Controllers
         {
             var mockInputModel = ProductMockData.ProductNameIsNullInC1reateProductInputModel().ToRequestModel();
 
-            Func<Task> func = async () => await _client.PostAsync("/api/product", mockInputModel).ConfigureAwait(false); ;
+            Func<Task> func = async () => await _client.PostAsync("/api/products", mockInputModel).ConfigureAwait(false); ;
 
             func.Should()?.ThrowAsync<ArgumentException>()
                 .WithParameterName("Product Name cannot be null.");
-
-            //Action action = () => _client.PostAsync("/api/product", mockInputModel).GetAwaiter().GetResult();
-            //action.Should().Throw<ArgumentException>();
-
-            //Assert.ThrowsAsync<ArgumentException>(async () => await _client.PostAsync("/api/product", mockInputModel));
-
-            //_client.Invoking(a => a.PostAsync("/api/product", mockInputModel).GetAwaiter().GetResult())
-            //    .Should().Throw<ArgumentException>().WithMessage("Product Name cannot be null");
-
-            //Action action = async () => await _client.PostAsync("/api/product", mockInputModel);
-            //action.Should().Throw<ArgumentException>();
-
-            // Asserts that calling GetId() will throw
-            //FluentActions.Invoking(() => _client.PostAsync("/api/product", mockInputModel)).Should().ThrowAsync<NullReferenceException>();
-
-            //Func<Task> act = async () => await _client.PostAsync("/api/product", mockInputModel);
-            //act.Should().ThrowAsync<NullReferenceException>();
-
-            //Action action = async () => await _client.PostAsync("/api/product", mockInputModel);
-            //action.Should().Throw<NullReferenceException>().Where(ex => ex.Message != null).Where(ex => ex.Data.Count > 0);
         }
 
         [Fact]
@@ -99,11 +79,10 @@ namespace ECommerce.IntegrationTest.Controllers
         {
             var mockInputModel = ProductMockData.ProductTitleIsNullInCreateProductInputModel().ToRequestModel();
 
-            Func<Task> func = async () => await _client.PostAsync("/api/product", mockInputModel).ConfigureAwait(false);
+            Func<Task> func = async () => await _client.PostAsync("/api/products", mockInputModel).ConfigureAwait(false);
 
             func.Should()?.ThrowAsync<ArgumentException>()
                 .WithParameterName("Product Title cannot be null.");
-
         }
 
         #endregion [ CreateProduct ]
@@ -115,7 +94,7 @@ namespace ECommerce.IntegrationTest.Controllers
         {
             int productId = await GetValidProductId();
 
-            var response = await _client.GetAsync($"/api/product/{productId}").ConfigureAwait(false);
+            var response = await _client.GetAsync($"/api/products/{productId}").ConfigureAwait(false);
 
             response.StatusCode.Should().Be(System.Net.HttpStatusCode.OK);
             response.IsSuccessStatusCode.Should().BeTrue();
@@ -132,7 +111,7 @@ namespace ECommerce.IntegrationTest.Controllers
             int productId = await GetValidProductId();
             int invalidProductId = (productId + 10);
 
-            var response = await _client.GetAsync($"/api/product/{invalidProductId}").ConfigureAwait(false);
+            var response = await _client.GetAsync($"/api/products/{invalidProductId}").ConfigureAwait(false);
 
             response.StatusCode.Should().Be(System.Net.HttpStatusCode.OK);
             response.IsSuccessStatusCode.Should().BeTrue();
@@ -150,7 +129,7 @@ namespace ECommerce.IntegrationTest.Controllers
         {
             int productId = ProductMockData.Zero;
 
-            Func<Task> func = async () => { await _client.GetAsync($"/api/product/{productId}"); };
+            Func<Task> func = async () => { await _client.GetAsync($"/api/products/{productId}"); };
 
             func.Should().ThrowAsync<ArgumentException>()
                 .WithParameterName("Product Id Is Invalid");
@@ -162,7 +141,7 @@ namespace ECommerce.IntegrationTest.Controllers
         {
             int productId = ProductMockData.NegativeOne;
 
-            Func<Task> func = () => _client.GetAsync($"/api/product/{productId}");
+            Func<Task> func = () => _client.GetAsync($"/api/products/{productId}");
 
             func.Should()?.ThrowAsync<ArgumentException>()
                 .WithParameterName("Product Id Is Invalid");
@@ -182,7 +161,7 @@ namespace ECommerce.IntegrationTest.Controllers
 
             var mockInputModel = validUpdateProductInputModel.ToRequestModel();
 
-            var response = await _client.PutAsync($"/api/product/{productId}", mockInputModel).ConfigureAwait(false);
+            var response = await _client.PutAsync($"/api/products/{productId}", mockInputModel).ConfigureAwait(false);
 
             response.StatusCode.Should().Be(System.Net.HttpStatusCode.NoContent);
             response.IsSuccessStatusCode.Should().BeTrue();
@@ -203,7 +182,7 @@ namespace ECommerce.IntegrationTest.Controllers
 
             var mockInputModel = validUpdateProductInputModel.ToRequestModel();
 
-            Func<Task> func = async () => await _client.PutAsync($"/api/product/{productId}", mockInputModel).ConfigureAwait(false); ;
+            Func<Task> func = async () => await _client.PutAsync($"/api/products/{productId}", mockInputModel).ConfigureAwait(false);
 
             func.Should()?.ThrowAsync<ArgumentException>()
                 .WithParameterName("Product Name cannot be null.");
@@ -219,7 +198,7 @@ namespace ECommerce.IntegrationTest.Controllers
 
             var mockInputModel = validUpdateProductInputModel.ToRequestModel();
 
-            Func<Task> func = async () => await _client.PutAsync($"/api/product/{productId}", mockInputModel).ConfigureAwait(false); ;
+            Func<Task> func = async () => await _client.PutAsync($"/api/products/{productId}", mockInputModel).ConfigureAwait(false); ;
 
             func.Should()?.ThrowAsync<ArgumentException>()
                 .WithParameterName("Product Title cannot be null.");
@@ -235,7 +214,7 @@ namespace ECommerce.IntegrationTest.Controllers
 
             var mockInputModel = validUpdateProductInputModel.ToRequestModel();
 
-            Func<Task> func = async () => await _client.PutAsync($"/api/product/{productId}", mockInputModel).ConfigureAwait(false); ;
+            Func<Task> func = async () => await _client.PutAsync($"/api/products/{productId}", mockInputModel).ConfigureAwait(false); ;
 
             func.Should()?.ThrowAsync<ArgumentException>()
                 .WithParameterName("ProductId Is Not Found.");
@@ -251,7 +230,7 @@ namespace ECommerce.IntegrationTest.Controllers
 
             var mockInputModel = validUpdateProductInputModel.ToRequestModel();
 
-            Func<Task> func = async () => await _client.PutAsync($"/api/product/{productId}", mockInputModel);
+            Func<Task> func = async () => await _client.PutAsync($"/api/products/{productId}", mockInputModel);
 
             func.Should()?.ThrowAsync<ArgumentException>()
                 .WithParameterName("ProductId Is Invalid.");
@@ -267,7 +246,7 @@ namespace ECommerce.IntegrationTest.Controllers
 
             var mockInputModel = validUpdateProductInputModel.ToRequestModel();
 
-            Func<Task> func = async () => await _client.PutAsync($"/api/product/{productId}", mockInputModel);
+            Func<Task> func = async () => await _client.PutAsync($"/api/products/{productId}", mockInputModel);
 
             func.Should()?.ThrowAsync<ArgumentException>()
                 .WithParameterName("ProductId Is Invalid.");
@@ -282,7 +261,7 @@ namespace ECommerce.IntegrationTest.Controllers
         {
             int productId = await GetValidProductId();
 
-            var response = await _client.DeleteAsync($"/api/product/{productId}").ConfigureAwait(false);
+            var response = await _client.DeleteAsync($"/api/products/{productId}").ConfigureAwait(false);
 
             response.StatusCode.Should().Be(System.Net.HttpStatusCode.NoContent);
             response.IsSuccessStatusCode.Should().BeTrue();
@@ -301,7 +280,7 @@ namespace ECommerce.IntegrationTest.Controllers
             int productId = await GetValidProductId();
             int invalidProductId = (productId + 10);
 
-            Func<Task> func = async () =>  await _client.DeleteAsync($"/api/product/{productId}");
+            Func<Task> func = async () =>  await _client.DeleteAsync($"/api/products/{productId}");
 
             func.Should()?.ThrowAsync<ArgumentException>()
                 .WithParameterName("ProductId Is Not Found.");
@@ -314,7 +293,7 @@ namespace ECommerce.IntegrationTest.Controllers
         {
             int productId = ProductMockData.Zero;
 
-            Func<Task> func = async () => await _client.DeleteAsync($"/api/product/{productId}");
+            Func<Task> func = async () => await _client.DeleteAsync($"/api/products/{productId}");
 
             func.Should().ThrowAsync<ArgumentException>()
                 .WithParameterName("ProductId Is Invalid.");
@@ -326,7 +305,7 @@ namespace ECommerce.IntegrationTest.Controllers
         {
             int productId = ProductMockData.NegativeOne;
 
-            Func<Task> func = async () => await _client.DeleteAsync($"/api/product/{productId}");
+            Func<Task> func = async () => await _client.DeleteAsync($"/api/products/{productId}");
 
             func.Should()?.ThrowAsync<ArgumentException>()
                 .WithParameterName("ProductId Is Invalid.");
@@ -334,7 +313,6 @@ namespace ECommerce.IntegrationTest.Controllers
         }
 
         #endregion [ DeleteProduct ]
-
 
         #region [ Private ]
 
@@ -349,7 +327,7 @@ namespace ECommerce.IntegrationTest.Controllers
 
         private async Task<ProductViewModel> GetProductByProductId(int productId)
         {
-            var responseProductViewModel = await _client.GetAsync($"/api/product/{productId}").ConfigureAwait(false);
+            var responseProductViewModel = await _client.GetAsync($"/api/products/{productId}").ConfigureAwait(false);
 
             var newProductViewModel = await responseProductViewModel.ToResponseModel<ProductViewModel>();
 
@@ -361,7 +339,7 @@ namespace ECommerce.IntegrationTest.Controllers
         {
             var mockInputModel = ProductMockData.ValidCreateProductInputModel().ToRequestModel();
 
-            var response = await _client.PostAsync("/api/product", mockInputModel).ConfigureAwait(false);
+            var response = await _client.PostAsync("/api/products", mockInputModel).ConfigureAwait(false);
 
             response.EnsureSuccessStatusCode();
 
