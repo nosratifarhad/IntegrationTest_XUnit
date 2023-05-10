@@ -1,7 +1,6 @@
 ﻿using Bogus;
-using ECommerce.Domain.Products.Dtos.ProductDtos;
-using ECommerce.Domain.Products.Entitys;
-using ECommerce.Domain.Products.Enums;
+using ECommerce.Api.Domain.Entitys;
+using ECommerce.Api.Domain.Enums;
 using ECommerce.Service.InputModels.ProductInputModels;
 
 namespace ECommerce.IntegrationTest.MockDatas

@@ -1,4 +1,8 @@
-﻿using ECommerce.Api.IOC;
+﻿using ECommerce.Api.Domain;
+using ECommerce.Api.Infra.Repositories.ReadRepositories.ProductReadRepositories;
+using ECommerce.Api.Infra.Repositories.WriteRepositories.ProductWriteRepositories;
+using ECommerce.Api.Services;
+using ECommerce.Api.Services.Contract;
 using Microsoft.OpenApi.Models;
 
 namespace ECommerce.Api
@@ -14,9 +18,20 @@ namespace ECommerce.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.RegisterServices();
-
             services.AddControllers();
+
+            #region [ Application ]
+
+            services.AddScoped<IProductService, ProductService>();
+
+            #endregion [Application]
+
+            #region [ Infra - Data ]
+
+            services.AddScoped<IProductReadRepository, ProductReadRepository>();
+            services.AddScoped<IProductWriteRepository, ProductWriteRepository>();
+
+            #endregion [ Infra - Data EventSourcing ]
 
             #region [ Swagger ]
             services.AddSwaggerGen(c =>
