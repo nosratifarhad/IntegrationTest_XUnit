@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerce.Api", "ECommerceIntegrationTestSolution\ECommerce.Api\ECommerce.Api.csproj", "{280587C8-0BE5-409B-949F-04018DE53E47}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerce.Api", "src\ECommerce.Api\ECommerce.Api.csproj", "{280587C8-0BE5-409B-949F-04018DE53E47}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{D9BBC39E-F024-41C0-8E33-8B3183906762}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerce.IntegrationTest", "ECommerceIntegrationTestSolution\test\ECommerce.IntegrationTest\ECommerce.IntegrationTest.csproj", "{540BD384-65DE-44EB-A320-B9F21FE5FAAB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerce.IntegrationTest", "src\test\ECommerce.IntegrationTest\ECommerce.IntegrationTest.csproj", "{540BD384-65DE-44EB-A320-B9F21FE5FAAB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
